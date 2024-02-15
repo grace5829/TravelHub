@@ -1,5 +1,14 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Guest, GuestsContext } from "..";
+import styled from "styled-components";
+
+const FormWrapper = styled.span`
+  display: grid;
+  grid-template-columns: 170px 170px 170px 170px;
+  row-gap: 10px;
+  padding: 10px;
+`;
+
 
 export default function Form() {
   const { guests, setGuests } = useContext(GuestsContext);
@@ -28,7 +37,7 @@ export default function Form() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={handleSubmit}>
         <form>
           <label htmlFor="firstName">
             First Name:
@@ -88,7 +97,7 @@ export default function Form() {
           </label>
         </form>
         <input type="submit" />
-      </form>
+      </FormWrapper>
 
     </div>
   );
