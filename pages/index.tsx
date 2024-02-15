@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { createContext } from "react";
+import Logo from "./components/logo";
 import GuestsPage from "./guestsPage";
 
 
@@ -40,6 +41,22 @@ export default function Home() {
       amountDue: 0,
       RSVP:'pending'
     },
+    {
+      firstName: "Person",
+      lastName: "3",
+      gender: "male",
+      age: 23,
+      amountDue: 0,
+      RSVP:'pending'
+    },
+    {
+      firstName: "Person",
+      lastName: "4",
+      gender: "male",
+      age: 23,
+      amountDue: 0,
+      RSVP:'pending'
+    },
   ]);
   const contextValue: GlobalContent = {
     guests,
@@ -47,6 +64,7 @@ export default function Home() {
   };
   return (
     <GuestsContext.Provider value={contextValue}>
+      <Logo/>
       <GuestsPage/>
     </GuestsContext.Provider>
   );
