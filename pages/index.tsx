@@ -41,6 +41,22 @@ export default function Home() {
       amountDue: 0,
       RSVP:'pending'
     },
+    {
+      firstName: "Person",
+      lastName: "3",
+      gender: "male",
+      age: 23,
+      amountDue: 0,
+      RSVP:'pending'
+    },
+    {
+      firstName: "Person",
+      lastName: "4",
+      gender: "male",
+      age: 23,
+      amountDue: 0,
+      RSVP:'pending'
+    },
   ]);
   const contextValue: GlobalContent = {
     guests,

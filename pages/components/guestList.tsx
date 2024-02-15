@@ -23,9 +23,11 @@ justify-content: center;
 export default function GuestList() {
     const { guests, setGuests } = useContext(GuestsContext);
 
-    const removeGuest=(index:number)=>{
-        if(setGuests && guests?.splice(index, 1))
-            setGuests(guests?.splice(index, 1))
+    const removeGuest=(e: any)=>{
+        const name = e.target.getAttribute("name")
+        if(setGuests && guests)
+        setGuests(guests.filter(guest => guest.firstName+guest.lastName !== name));
+
     }
     
     return (
@@ -49,7 +51,7 @@ export default function GuestList() {
             <EachGuestInfo>{guest.age} </EachGuestInfo>
             <EachGuestInfo>{guest.gender}</EachGuestInfo>
             <EachGuestInfo>${guest.amountDue}</EachGuestInfo>
-            <button onClick={()=>removeGuest(index)}>-</button>
+            <button name={guest.firstName+guest.lastName} onClick={(e)=>removeGuest(e)}>-</button>
           </EachGuest>
         ))}
       </TableWrapper>
