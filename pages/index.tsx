@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { createContext } from "react";
+import GuestsPage from "./guestsPage";
 
 
 export type Guest = {
@@ -46,6 +47,7 @@ export default function Home() {
   };
   return (
     <GuestsContext.Provider value={contextValue}>
+      <GuestsPage/>
     </GuestsContext.Provider>
   );
 }
