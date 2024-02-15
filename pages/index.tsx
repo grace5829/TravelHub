@@ -1,14 +1,53 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+"use client";
+import { useState } from "react";
+import { createContext } from "react";
+import GuestsPage from "./guestsPage";
 
-const inter = Inter({ subsets: ["latin"] });
+
+export type Guest = {
+  firstName: string;
+  lastName: string;
+  gender: "male" | "female";
+  age: number;
+  amountDue: number;
+  RSVP:'yes'|'no'|'maybe'|'pending'
+};
+export type GlobalContent = {
+  guests: Array<Guest> | null;
+  setGuests: React.Dispatch<React.SetStateAction<Guest[]>> | null;
+};
+
+export const GuestsContext = createContext<GlobalContent>({
+  guests: null,
+  setGuests: () => {},
+});
 
 export default function Home() {
+  const [guests, setGuests] = useState<Array<Guest>>([
+    {
+      firstName: "Person",
+      lastName: "1",
+      gender: "female",
+      age: 27,
+      amountDue: 100,
+      RSVP:'pending'
+    },
+    {
+      firstName: "Person",
+      lastName: "2",
+      gender: "male",
+      age: 23,
+      amountDue: 0,
+      RSVP:'pending'
+    },
+  ]);
+  const contextValue: GlobalContent = {
+    guests,
+    setGuests,
+  };
   return (
-<div>
-  Home
-</div>
+    <GuestsContext.Provider value={contextValue}>
+      <GuestsPage/>
+    </GuestsContext.Provider>
   );
 }
